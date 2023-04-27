@@ -1,88 +1,45 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_MY_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "bargauge",
-      "name": "Bar gauge",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "gauge",
-      "name": "Gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "7.5.5"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
+  "id": 6,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "BGyqNzsVz"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "fixedColor": "rgba(219, 237, 215, 0.2)",
             "mode": "fixed"
           },
-          "mappings": [
-            {
-              "from": "",
-              "id": 1,
-              "text": "",
-              "to": "",
-              "type": 1
-            }
-          ],
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -158,15 +115,16 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "BGyqNzsVz"
+          },
+          "editorMode": "builder",
           "expr": "jetson_uptime",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
+          "range": true,
           "refId": "System Uptime"
         }
       ],
@@ -177,13 +135,20 @@
           "options": {
             "valueLabel": "uptime"
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         }
       ],
       "transparent": true,
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "BGyqNzsVz"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -191,9 +156,12 @@
             "mode": "fixed"
           },
           "custom": {
-            "align": null,
-            "displayMode": "color-text",
-            "filterable": false
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -281,19 +249,27 @@
       },
       "id": 12,
       "options": {
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "7.5.5",
-      "repeat": null,
+      "pluginVersion": "9.4.7",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "BGyqNzsVz"
+          },
+          "editorMode": "builder",
           "expr": "jetson_info_board_info",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
+          "range": true,
           "refId": "Board Info"
         }
       ],
@@ -333,7 +309,10 @@
       "type": "table"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "BGyqNzsVz"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -341,9 +320,12 @@
             "mode": "fixed"
           },
           "custom": {
-            "align": null,
-            "displayMode": "color-text",
-            "filterable": false
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -479,18 +461,27 @@
       },
       "id": 14,
       "options": {
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "jetson_info_hardware_info",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "BGyqNzsVz"
+          },
+          "editorMode": "builder",
+          "expr": "jetson_info_board_info",
+          "range": true,
           "refId": "Board Hardware Info"
         }
       ],
@@ -542,13 +533,17 @@
       "type": "table"
     },
     {
-      "datasource": "-- Mixed --",
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "mappings": [],
+          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
@@ -591,10 +586,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
-          "datasource": "${DS_MY_PROMETHEUS}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "BGyqNzsVz"
+          },
           "exemplar": true,
           "expr": "jetson_usage_gpu",
           "format": "time_series",
@@ -612,18 +610,26 @@
           "options": {
             "valueLabel": "gpu"
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         }
       ],
       "type": "gauge"
     },
     {
-      "datasource": "-- Mixed --",
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "mappings": [],
+          "max": 2000000,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
@@ -655,6 +661,8 @@
       "id": 6,
       "options": {
         "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
@@ -666,12 +674,16 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
-          "datasource": "${DS_MY_PROMETHEUS}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "BGyqNzsVz"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "jetson_usage_cpu",
+          "expr": "{cpu=~\"cpu_1|cpu_2|cpu_3|cpu_4|cpu_5|cpu_6|cpu_7|cpu_8\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -686,6 +698,10 @@
           "options": {
             "valueLabel": "cpu"
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         },
         {
           "id": "organize",
@@ -712,7 +728,10 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "BGyqNzsVz"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -720,6 +739,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
@@ -751,6 +771,7 @@
       "id": 7,
       "interval": "5s",
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -762,14 +783,16 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "jetson_usage_fan",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "BGyqNzsVz"
+          },
+          "editorMode": "builder",
+          "expr": "jetson_usage_fan{fan=\"speed\"}",
+          "range": true,
           "refId": "Fan Usage"
         }
       ],
@@ -780,12 +803,19 @@
           "options": {
             "valueLabel": "fan"
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         }
       ],
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "BGyqNzsVz"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -851,6 +881,8 @@
       "interval": "5s",
       "options": {
         "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -862,14 +894,16 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "jetson_usage_ram",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "BGyqNzsVz"
+          },
+          "editorMode": "builder",
+          "expr": "jetson_usage_ram{ram=\"used\"}",
+          "range": true,
           "refId": "RAM Usage"
         }
       ],
@@ -880,12 +914,19 @@
           "options": {
             "valueLabel": "ram"
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         }
       ],
       "type": "bargauge"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "BGyqNzsVz"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -925,6 +966,7 @@
       "id": 2,
       "interval": "5s",
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -936,14 +978,16 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "jetson_usage_disk",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "BGyqNzsVz"
+          },
+          "editorMode": "builder",
+          "expr": "jetson_usage_disk{disk=\"available\"}",
+          "range": true,
           "refId": "Disk Usage"
         }
       ],
@@ -954,6 +998,10 @@
           "options": {
             "valueLabel": "disk"
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         },
         {
           "id": "filterFieldsByName",
@@ -969,7 +1017,10 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "BGyqNzsVz"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1021,15 +1072,29 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "jetson_temperatures",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "BGyqNzsVz"
+          },
+          "editorMode": "builder",
+          "expr": "jetson_temperatures{temperature=\"cpu\"}",
+          "range": true,
           "refId": "Sensor Temperatures"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "BGyqNzsVz"
+          },
+          "editorMode": "builder",
+          "expr": "jetson_temperatures{temperature=\"gpu\"}",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
         }
       ],
       "title": "Sensor Temperatures",
@@ -1039,6 +1104,10 @@
           "options": {
             "valueLabel": "temperature"
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         },
         {
           "id": "organize",
@@ -1060,7 +1129,10 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "BGyqNzsVz"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1112,17 +1184,31 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "value_and_name"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "jetson_usage_power",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "BGyqNzsVz"
+          },
+          "editorMode": "builder",
+          "expr": "jetson_usage_power{power=\"cpu\"}",
+          "range": true,
           "refId": "Power Usage"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "BGyqNzsVz"
+          },
+          "editorMode": "builder",
+          "expr": "jetson_usage_power{power=\"tot\"}",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
         }
       ],
       "title": "Power Usage",
@@ -1132,6 +1218,10 @@
           "options": {
             "valueLabel": "power"
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         },
         {
           "id": "organize",
@@ -1162,7 +1252,8 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 27,
+  "revision": 1,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1174,7 +1265,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "NVIDIA Jetson",
-  "uid": "n6FGltjMz",
-  "version": 1
+  "title": "NVIDIA Jetson Copy",
+  "uid": "FryIlWyVk",
+  "version": 1,
+  "weekStart": ""
 }
