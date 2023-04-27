@@ -103,7 +103,7 @@ class CustomCollector(object):
             # GPU usage
             #
             g = GaugeMetricFamily('jetson_usage_gpu', 'GPU % schedutil', labels=['gpu'])
-            g.add_metric(['val'], self._jetson.gpu['gv11b']['status']['load'])
+            g.add_metric(['val'], self._jetson.gpu['ga10b']['status']['load'])
             # g.add_metric(['frq'], self._jetson.gpu['frq'])
             # g.add_metric(['min_freq'], self._jetson.gpu['min_freq'])
             # g.add_metric(['max_freq'], self._jetson.gpu['max_freq'])
@@ -169,31 +169,34 @@ class CustomCollector(object):
             # Power
             #
             g = GaugeMetricFamily('jetson_usage_power', 'Power usage', labels=['power'])
-            g.add_metric(['cpu'], self._jetson.power['rail']['CPU']['power'] )
-            g.add_metric(['cv'], self._jetson.power['rail']['CV']['power'] )
-            g.add_metric(['gpu'], self._jetson.power['rail']['GPU']['power'] ) 
-            g.add_metric(['soc'], self._jetson.power['rail']['SOC']['power'] )
-            g.add_metric(['sys5v'], self._jetson.power['rail']['SYS5V']['power'] )
-            g.add_metric(['vddrq'], self._jetson.power['rail']['VDDRQ']['power'] )
+            g.add_metric(['cpu'], self._jetson.power['rail']['VDD_CPU_GPU_CV']['power'] )
+            g.add_metric(['cv'], self._jetson.power['rail']['VDD_SOC']['power'] )
+            g.add_metric(['tot'], self._jetson.power['tot']['power'] )
+            #g.add_metric(['gpu'], self._jetson.power['rail']['GPU']['power'] ) 
+            #g.add_metric(['soc'], self._jetson.power['rail']['SOC']['power'] )
+            #g.add_metric(['sys5v'], self._jetson.power['rail']['SYS5V']['power'] )
+            #g.add_metric(['vddrq'], self._jetson.power['rail']['VDDRQ']['power'] )
             yield g
 
             g = GaugeMetricFamily('jetson_usage_voltage_levels', 'Voltage', labels=['voltage'])
-            g.add_metric(['cpu'], self._jetson.power['rail']['CPU']['volt'] ) 
-            g.add_metric(['cv'], self._jetson.power['rail']['CV']['volt'] )
-            g.add_metric(['gpu'], self._jetson.power['rail']['GPU']['volt'] ) 
-            g.add_metric(['soc'], self._jetson.power['rail']['SOC']['volt'] )
-            g.add_metric(['sys5v'], self._jetson.power['rail']['SYS5V']['volt'] )
-            g.add_metric(['vddrq'], self._jetson.power['rail']['VDDRQ']['volt'] )
-            yield g
+            g.add_metric(['cpu'], self._jetson.power['rail']['VDD_CPU_GPU_CV']['volt'] ) 
+            g.add_metric(['cv'], self._jetson.power['rail']['VDD_SOC']['volt'] )
+            g.add_metric(['tot'], self._jetson.power['tot']['volt'] )
+            #g.add_metric(['gpu'], self._jetson.power['rail']['GPU']['volt'] ) 
+            #g.add_metric(['soc'], self._jetson.power['rail']['SOC']['volt'] )
+            #g.add_metric(['sys5v'], self._jetson.power['rail']['SYS5V']['volt'] )
+            #g.add_metric(['vddrq'], self._jetson.power['rail']['VDDRQ']['volt'] )
+            #yield g
 
             g = GaugeMetricFamily('jetson_usage_current_values', 'Current', labels=['current'])
-            g.add_metric(['cpu'], self._jetson.power['rail']['CPU']['curr'] )
-            g.add_metric(['cv'], self._jetson.power['rail']['CV']['curr'] )
-            g.add_metric(['gpu'], self._jetson.power['rail']['GPU']['curr'] ) 
-            g.add_metric(['soc'], self._jetson.power['rail']['SOC']['curr'] )
-            g.add_metric(['sys5v'], self._jetson.power['rail']['SYS5V']['curr'] )
-            g.add_metric(['vddrq'], self._jetson.power['rail']['VDDRQ']['curr'] )
-            yield g
+            g.add_metric(['cpu'], self._jetson.power['rail']['VDD_CPU_GPU_CV']['curr'] )
+            g.add_metric(['cv'], self._jetson.power['rail']['VDD_SOC']['curr'] )
+            g.add_metric(['tot'], self._jetson.power['tot']['curr'] )
+            #g.add_metric(['gpu'], self._jetson.power['rail']['GPU']['curr'] ) 
+            #g.add_metric(['soc'], self._jetson.power['rail']['SOC']['curr'] )
+            #g.add_metric(['sys5v'], self._jetson.power['rail']['SYS5V']['curr'] )
+            #g.add_metric(['vddrq'], self._jetson.power['rail']['VDDRQ']['curr'] )
+            #yield g
 
 
 if __name__ == '__main__':
