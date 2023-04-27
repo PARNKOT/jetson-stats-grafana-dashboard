@@ -156,13 +156,13 @@ class CustomCollector(object):
             # Sensor temperatures
             #
             g = GaugeMetricFamily('jetson_temperatures', 'Sensor temperatures', labels=['temperature'])
-            g.add_metric(['ao'], self._jetson.temperature['AO'] if 'AO' in self._jetson.temperature else 0)
-            g.add_metric(['gpu'], self._jetson.temperature['GPU'] if 'GPU' in self._jetson.temperature else 0)
-            g.add_metric(['tdiode'], self._jetson.temperature['Tdiode'] if 'Tdiode' in self._jetson.temperature else 0)
-            g.add_metric(['aux'], self._jetson.temperature['AUX'] if 'AUX' in self._jetson.temperature else 0)
-            g.add_metric(['cpu'], self._jetson.temperature['CPU'] if 'CPU' in self._jetson.temperature else 0)
-            g.add_metric(['thermal'], self._jetson.temperature['thermal'] if 'thermal' in self._jetson.temperature else 0)
-            g.add_metric(['tboard'], self._jetson.temperature['Tboard'] if 'Tboard' in self._jetson.temperature else 0)
+            g.add_metric(['ao'], self._jetson.temperature['AO']["temp"] if 'AO' in self._jetson.temperature else 0)
+            g.add_metric(['gpu'], self._jetson.temperature['GPU']["temp"] if 'GPU' in self._jetson.temperature else 0)
+            g.add_metric(['tdiode'], self._jetson.temperature['Tdiode']["temp"] if 'Tdiode' in self._jetson.temperature else 0)
+            g.add_metric(['aux'], self._jetson.temperature['AUX']["temp"] if 'AUX' in self._jetson.temperature else 0)
+            g.add_metric(['cpu'], self._jetson.temperature['CPU']["temp"] if 'CPU' in self._jetson.temperature else 0)
+            g.add_metric(['thermal'], self._jetson.temperature['thermal']["temp"] if 'thermal' in self._jetson.temperature else 0)
+            g.add_metric(['tboard'], self._jetson.temperature['Tboard']["temp"] if 'Tboard' in self._jetson.temperature else 0)
             yield g
 
             # 
